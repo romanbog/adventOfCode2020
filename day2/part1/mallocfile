@@ -1,0 +1,10 @@
+= Start
+@ /lib/arm-linux-gnueabihf/libc.so.6:(_IO_file_doallocate+0x78)[0x76eb7b10] + 0xe834e0 0x1000
+@ /lib/arm-linux-gnueabihf/libc.so.6:(_IO_file_doallocate+0x78)[0x76eb7b10] + 0xe844e8 0x400
+@ /lib/arm-linux-gnueabihf/libc.so.6:(_IO_setb+0x4c)[0x76ec73a4] - 0xe834e0
+@ /lib/arm-linux-gnueabihf/libc.so.6:(fclose+0x13c)[0x76eb7d1c] - 0xe83008
+@ /lib/arm-linux-gnueabihf/libc.so.6:[0x76eb87e4] + 0xe83008 0x160
+@ ./a.out:[0x106c8] + 0xe834e0 0x320
+@ /lib/arm-linux-gnueabihf/libc.so.6:(_IO_file_doallocate+0x78)[0x76eb7b10] + 0xe848f0 0x1000
+@ ./a.out:[0x10858] - 0xe834e0
+= End
