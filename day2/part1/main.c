@@ -16,18 +16,12 @@ int main(){
 		int foundChars = 0;
 		//parse pass string, looing for toFind chars
 		for(int i = 0; i < 1000; i++){
-			if(pass[i] == toFind){
-				foundChars++;
-			}
+			if(pass[i] == toFind){foundChars++;}
 		}
 		//determine foundChars is valid, increment total
-		if(foundChars <= max && foundChars >= min){
-			total++;
-		}
+		if(foundChars <= max && foundChars >= min){total++;}
 		//reset string to all null chars
-		for(int i = 0; i < 1000; i++){
-			pass[i] = '\0';
-		}
+		for(int i = 0; i < 1000; i++){pass[i] = '\0';}
 
 	}
 
