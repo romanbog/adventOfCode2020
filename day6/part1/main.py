@@ -1,20 +1,14 @@
-import math
-
 with open("input.txt", "r") as f: 
  array = f.read().split('\n\n')
-#print(array)
-#array.pop()
-#array = array[:-1]
+
 summation = 0
+#for every group
 for element in array:
- rowmax = 127
- newLine = chr(10)
+ #replace newlines
  string = element.replace("\n", "" )
+ #join all in set string with onlyunique
  onlyunique = ''.join(set(string))
- print(string)
- print(len(onlyunique))
+ #add length of unique answers to summation
  summation += len(onlyunique)
- #trashvar = element.split('\n')
- #element = " ".join(element.splitlines())
-#print(array)
+
 print(summation)

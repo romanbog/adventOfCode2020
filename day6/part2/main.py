@@ -1,34 +1,33 @@
 import math
-from string import ascii_lowercase
 
 with open("input.txt", "r") as f: 
  array = f.read().split('\n\n')
-#print(array)
-#array.pop()
-#array = array[:-1]
-summation = 0
+
+#summation = 0
 summationList = []
-#teams = array.split('\n')
+
+#for every group
 for element in array:
- rowmax = 127
- newLine = chr(10)
+ #split group into array of people (on newline)
  grouparray = element.split('\n')
  resultList = []
+ #for every person
  for grpelement in grouparray:
   tempSet = set()
+  #for all char c in a person, add it to our new set
   for c in grpelement:
    tempSet.update(c)
+  #add our set of chars into an array
   resultList.append(tempSet)
- tempFinal = set.intersection(*resultList)
- summationList.append(tempFinal)
-    #if any(c in s for s in grouparray):
-    
-      #resultList.append(c)
- #summation += len(resultList)
- #onlyunique = ''.join(set(string))
- #trashvar = element.split('\n')
- #element = " ".join(element.splitlines())
+ #intersection of resultList will give us all chars that are 
+ #found inside every element of resultList
+ setOfUnique = set.intersection(*resultList)
+ #We'll all of those unique chars into a list, sectioned by groups.
+ summationList.append(setOfUnique)
  incrementer = 0
+ #now, we count up all the stuff inside of our list of unique chars
+ #print(summationList)
  for i in summationList:
   incrementer += len(i)
+#poggers
 print(incrementer)
