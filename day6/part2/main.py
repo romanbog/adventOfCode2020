@@ -19,15 +19,14 @@ for element in array:
    tempSet.update(c)
   #add our set of chars into an array
   resultList.append(tempSet)
- #intersection of resultList will give us all chars that are 
+ #intersection of resultList will give us all unique chars that are 
  #found inside every element of resultList
  setOfUnique = set.intersection(*resultList)
- #We'll all of those unique chars into a list, sectioned by groups.
+ #We'll add of those unique chars into a list, so every element is a group.
  summationList.append(setOfUnique)
  incrementer = 0
  #now, we count up all the stuff inside of our list of unique chars
- #print(summationList)
  for i in summationList:
   incrementer += len(i)
-#poggers
+#poggers :0
 print(incrementer)
