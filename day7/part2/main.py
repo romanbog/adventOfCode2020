@@ -1,27 +1,37 @@
 from collections import defaultdict
 
 def search(searchTerm, ruleDict, bagResult):
- if(searchTerm not in ruleDict):
-  return
+ #if(searchTerm not in ruleDict):
+  #return 0
  #print(searchTerm)
  #bagResult.add(searchTerm)
+ summation = 0
  setInside = ruleDict[searchTerm]
+ #print(setInside)
  for element in setInside:
-  bagResult.add(element)
-  search(element, ruleDict, bagResult)
+  print(element)
+  elementArray = element.split()
+  #print(elementArray)
+  #print(elementArray[2])
+  #bagResult.add(element)
+  #summation += int(elementArray[2])
+  summation += int(elementArray[2])
+  #print(''.join(elementArray[1:]))
+  summation *= int(elementArray[2]) * search(''.join(elementArray[1:]), ruleDict, bagResult)
+ return summation
  
  
-with open("input.txt", "r") as f: 
+with open("example.txt", "r") as f: 
  array = f.read().split('\n')
 
-summation = 0
 #sets every value to an empty set
 ruleDict = defaultdict(set)
 #for every group
 array.pop()
-print(array)
+#print(array)
 for rule in array:
  #replace newlines
+ print(rule)
  string = rule.split()
  #bagName = " "
  #string[:2] = [bagName]
@@ -36,7 +46,8 @@ for rule in array:
  #print(string)
  #print(rule)
  for i in range(4, len(string), 4):
-  ruleDict[string[i+1] + ' ' + string[i+2]].add(bagName)
+  ruleDict[string[i+1] + ' ' + string[i+2]].add(bagName + ' ' + string[i])
+  #print(ruleDict)
 '''
  while(counter + 1 <= len(string)):
   toAdd += string[counter]
@@ -59,8 +70,8 @@ for rule in array:
 searchTerm = 'shiny gold'
 #print(ruleDict[searchTerm])
 bagResult = set()
-search(searchTerm, ruleDict, bagResult)
-#print(ruleDict)
+print(search(searchTerm, ruleDict, bagResult))
+print(ruleDict)
 print(len(bagResult))
 #if searchTerm in ruleDict:
  #print("hi")
