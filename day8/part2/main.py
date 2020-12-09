@@ -57,7 +57,7 @@ while len(array) > position:
  elif opcode[0] == 'jmp' :
   #add "visited" to this element in the array
   array[position] = "visited " + array[position]
-  #make a positionNoSplit to pass into our function that will run with a modified command
+  #make a positionNoSplit to pass into our function. positionNoSplit acts as if our current instruction was an 'nop'
   positionNoSplit = position + 1
   #Same thing, but with accumulator.
   accumulatorNoSplit = accumulator
