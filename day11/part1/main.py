@@ -6,76 +6,107 @@
 #print(newArray)
 
 def placeSeats(array):
+ elementNum = 0
  for element in array:
   newElement = ''
   #row = list(element)
+  seatNum = 0
   for seat in element:
    #find occupied seats
    occupied = 0
    #Current problem: change to make it so that indexes work. str.index(stuff)
+   #print(element.index(seat))
+   #print(seatNum)
    try:
-    if array[array.index(element)+1][element.index(seat)-1] == '#':
+    #print(array[array.index(element)+1][seatNum-1])
+    #print(array[array.index(element)+1][seatNum])
+    #print(array[elementNum+1][seatNum])
+    #if array[array.index(element)+1][seatNum+1] == '#':
+    if array[elementNum+1][seatNum+1] == '#':
+     #print(array[elementNum+1][seatNum+1], elementNum+1, seatNum+1)
+     #print(seat)
+    #if array[array.index(element)+1][element.index(seat-1):element.index(seat)] == '#':
+     occupied += 1
+     #print(array.index(element), array.index(seat))
+   except:
+    pass
+   try:
+    #if array[array.index(element)+1][element.index(seat)] == '#':
+    #if array[array.index(element)+1][seatNum] == '#':
+    if array[elementNum+1][seatNum] == '#':
      occupied += 1
    except:
     pass
    try:
-    if array[array.index(element)+1][element.index(seat)] == '#':
+    #if array[array.index(element)+1][element.index(seat)+1] == '#':
+    #if array[array.index(element)+1][seatNum-1] == '#':
+    if array[elementNum+1][seatNum-1] == '#':
      occupied += 1
    except:
     pass
    try:
-    if array[array.index(element)+1][element.index(seat)+1] == '#':
+    #if array[array.index(element)][element.index(seat)-1] == '#':
+    #if array[array.index(element)][seatNum+1] == '#':
+    if array[elementNum][seatNum+1] == '#':
+     occupied += 1
+   except:
+    pass
+
+   #try:
+    #if array[array.index(element)][element.index(seat)] == '#':
+     #occupied += 1
+   #except:
+    #pass
+
+   try:
+    #if array[array.index(element)][element.index(seat)+1] == '#':
+    #if array[array.index(element)][seatNum-1] == '#':
+    if array[elementNum][seatNum-1] == '#':
      occupied += 1
    except:
     pass
    try:
-    if array[array.index(element)][element.index(seat)-1] == '#':
+    #if array[array.index(element)-1][element.index(seat)-1] == '#':
+    #if array[array.index(element)-1][seatNum-1] == '#':
+    if array[elementNum-1][seatNum-1] == '#':
      occupied += 1
    except:
     pass
    try:
-    if array[array.index(element)][element.index(seat)] == '#':
+    #if array[array.index(element)-1][element.index(seat)] == '#':
+    #if array[array.index(element)-1][seatNum] == '#':
+    if array[elementNum-1][seatNum] == '#':
      occupied += 1
    except:
     pass
    try:
-    if array[array.index(element)][element.index(seat)+1] == '#':
+    #if array[array.index(element)-1][element.index(seat)+1] == '#':
+    #if array[array.index(element)-1][seatNum+1] == '#':
+    if array[elementNum-1][seatNum+1] == '#':
      occupied += 1
    except:
     pass
-   try:
-    if array[array.index(element)-1][element.index(seat)-1] == '#':
-     occupied += 1
-   except:
-    pass
-   try:
-    if array[array.index(element)-1][element.index(seat)] == '#':
-     occupied += 1
-   except:
-    pass
-   try:
-    if array[array.index(element)-1][element.index(seat)+1] == '#':
-     occupied += 1
-   except:
-    pass
+   #print(elementNum)
    if seat == 'L' and occupied == 0:
     #print(occupied)
     newElement += '#'
    elif seat == '#' and occupied >= 4:
-    print(occupied)
+    print(occupied, elementNum, seatNum)
    #newArray[array.index(element)][element.index(seat)] = 'L'
    #seat = 'L' + seat[1:]
    #seat = seat.replace('#', 'L')
     newElement += 'L'
    else:
     newElement += seat
+   seatNum += 1
   #else:
    #newArray[array.index(element)][element.index(seat)] = [array.index(element)][element.index(seat)]
+  elementNum += 1
   newArray.append(newElement)
  return newArray
    
 
-with open("input.txt", "r") as f: 
+with open("example.txt", "r") as f: 
  array = f.read().split('\n')
 
 #with open("input.txt", "r") as f:
