@@ -22,7 +22,8 @@ def placeSeats(array):
     #print(array[array.index(element)+1][seatNum])
     #print(array[elementNum+1][seatNum])
     #if array[array.index(element)+1][seatNum+1] == '#':
-    if array[elementNum+1][seatNum+1] == '#':
+    if elementNum <= len(array) and seatNum+1 <= len(element) and  array[elementNum+1][seatNum+1] == '#':
+     #print("found: ", elementNum+1, seatNum+1)
      #print(array[elementNum+1][seatNum+1], elementNum+1, seatNum+1)
      #print(seat)
     #if array[array.index(element)+1][element.index(seat-1):element.index(seat)] == '#':
@@ -33,21 +34,24 @@ def placeSeats(array):
    try:
     #if array[array.index(element)+1][element.index(seat)] == '#':
     #if array[array.index(element)+1][seatNum] == '#':
-    if array[elementNum+1][seatNum] == '#':
+    if elementNum+1 <= len(array) and array[elementNum+1][seatNum] == '#':
+     #print("found: ", elementNum+1, seatNum)
      occupied += 1
    except:
     pass
    try:
     #if array[array.index(element)+1][element.index(seat)+1] == '#':
     #if array[array.index(element)+1][seatNum-1] == '#':
-    if array[elementNum+1][seatNum-1] == '#':
+    if elementNum+1 <= len(array) and seatNum > 0 and array[elementNum+1][seatNum-1] == '#':
+     #print("found: ", elementNum+1, seatNum-1)
      occupied += 1
    except:
     pass
    try:
     #if array[array.index(element)][element.index(seat)-1] == '#':
     #if array[array.index(element)][seatNum+1] == '#':
-    if array[elementNum][seatNum+1] == '#':
+    if seatNum+1 <= len(element) and  array[elementNum][seatNum+1] == '#':
+     #print("found: ", elementNum, seatNum+1)
      occupied += 1
    except:
     pass
@@ -61,28 +65,32 @@ def placeSeats(array):
    try:
     #if array[array.index(element)][element.index(seat)+1] == '#':
     #if array[array.index(element)][seatNum-1] == '#':
-    if array[elementNum][seatNum-1] == '#':
+    if seatNum > 0 and array[elementNum][seatNum-1] == '#':
+     #print("found: ", elementNum, seatNum-1)
      occupied += 1
    except:
     pass
    try:
     #if array[array.index(element)-1][element.index(seat)-1] == '#':
     #if array[array.index(element)-1][seatNum-1] == '#':
-    if array[elementNum-1][seatNum-1] == '#':
+    if elementNum > 0 and array[elementNum-1][seatNum] == '#':
+     #print("found: ", elementNum-1, seatNum)
      occupied += 1
    except:
     pass
    try:
     #if array[array.index(element)-1][element.index(seat)] == '#':
     #if array[array.index(element)-1][seatNum] == '#':
-    if array[elementNum-1][seatNum] == '#':
+    if elementNum > 0 and seatNum+1 <= len(element) and array[elementNum-1][seatNum+1] == '#':
+     #print("found: ", elementNum-1, seatNum+1)
      occupied += 1
    except:
     pass
    try:
     #if array[array.index(element)-1][element.index(seat)+1] == '#':
     #if array[array.index(element)-1][seatNum+1] == '#':
-    if array[elementNum-1][seatNum+1] == '#':
+    if elementNum > 0 and seatNum > 0 and array[elementNum-1][seatNum-1] == '#':
+     #print("found: ", elementNum-1, seatNum-1)
      occupied += 1
    except:
     pass
@@ -91,7 +99,7 @@ def placeSeats(array):
     #print(occupied)
     newElement += '#'
    elif seat == '#' and occupied >= 4:
-    print(occupied, elementNum, seatNum)
+    #print('turned')
    #newArray[array.index(element)][element.index(seat)] = 'L'
    #seat = 'L' + seat[1:]
    #seat = seat.replace('#', 'L')
@@ -99,6 +107,7 @@ def placeSeats(array):
    else:
     newElement += seat
    seatNum += 1
+   #print(seat, occupied, elementNum, seatNum)
   #else:
    #newArray[array.index(element)][element.index(seat)] = [array.index(element)][element.index(seat)]
   elementNum += 1
@@ -106,14 +115,14 @@ def placeSeats(array):
  return newArray
    
 
-with open("example.txt", "r") as f: 
+with open("input.txt", "r") as f: 
  array = f.read().split('\n')
 
 #with open("input.txt", "r") as f:
  #testArray = f.readlines()
 
 #print(testArray)
-array.pop()
+#array.pop()
 
 #print(array[0])
 #print(list(array[0]))
@@ -121,33 +130,40 @@ array.pop()
  #pass
 
 newArray = []
-newArray = placeSeats(array)
-print("through alg once")
-print(newArray)
-array = newArray
-print("array set to new")
-print(array)
-newArray = []
-newArray = placeSeats(array)
-print("through alg twice")
-print(newArray)
-'''
+#newArray = placeSeats(array)
+#print("through alg once")
+#print(newArray)
+#array = newArray
+#print("array set to new")
+#print(array)
+#newArray = []
+#newArray = placeSeats(array)
+#print("through alg twice")
+#print(newArray)
+#array = newArray
+#newArray = []
+#newArray = placeSeats(array)
+#print(newArray)
+#newArray = placeSeats(array)
+
 while newArray != array:
+ #array = newArray
+ #newArray = []
  newArray = placeSeats(array)
- if(newArray == array):
+ if newArray == array:
   break
  else:
   array = newArray
   newArray = []
-'''
-empties = 0
-for element in newArray:
+
+occupiedSeats = 0
+for element in array:
  for char in element:
   if char == '#':
-   empties += 1
-'''
+   occupiedSeats += 1
+
 print(newArray)
-print(empties)
+print(occupiedSeats)
 #print(newArray)
-print(array)
-'''
+#print(array)
+
