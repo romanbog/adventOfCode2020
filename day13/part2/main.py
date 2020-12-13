@@ -3,11 +3,12 @@ import time
 def checkEmpty(curPos, busIDList, emptyPos):
  for bus in busIDList:
   busTime = 0
-  while busTime < curPos + emptyPos:
-   busTime += 1
+  while busTime <= curPos + emptyPos:
+   busTime += int(bus)
   if busTime != curPos + emptyPos:
-   return True
- return False
+   print("non-empty found")
+   return False
+ return True
 
 def testInput(curPos, busIDList):
  currentBus = 0
@@ -23,7 +24,7 @@ def testInput(curPos, busIDList):
    while busTime < curPos:
     busTime += int(bus)
    if(index != curPos - busTime):
-    print(curPos, busTime, index)
+    #print(curPos, busTime, index)
     return False
  return True
 
@@ -34,10 +35,15 @@ arrivalTime = int(array[0])
 busIDList = array[1].split(',')
 
 curPos = 0
+printCount = 0
 while True:
+ #print(curPos)
  if testInput(curPos, busIDList):
   break
  curPos += int(busIDList[0])
+ printCount +=1 
+ if printCount % 100 == 1:
+  print(curPos, printCount)
  
 print(curPos)
 
