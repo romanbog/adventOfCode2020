@@ -3,14 +3,14 @@ with open("input.txt", "r") as f:
 
 array.pop()
 
+#set up initial ship and waypoint position
 northSouthShipPos = 0
 eastWestShipPos = 0
 northSouthWayPT = 1
 eastWestWayPT = 10
-#shipDir = 1
-#0 is north, 1 is east, 2 is south, 3 is west
 
 for element in array:
+#move our waypoint NSEW:
  if element[0] == 'N':
   northSouthWayPT += int(element[1:])
  elif element[0] == 'S':
@@ -19,6 +19,7 @@ for element in array:
   eastWestWayPT += int(element[1:])
  elif element[0] == 'W':
   eastWestWayPT -= int(element[1:])
+#rotate waypoint right. I had to do some math for this one! 
  elif element[0] == 'R':
   toTurn = element[1:]
   if toTurn == '90':
@@ -32,6 +33,7 @@ for element in array:
    tempNorthSouth = northSouthWayPT
    northSouthWayPT = eastWestWayPT
    eastWestWayPT = -tempNorthSouth
+#rotate waypoint left. Right, but inverted.
  elif element[0] == 'L':
   toTurn = element[1:]
   if toTurn == '90':
@@ -45,20 +47,10 @@ for element in array:
    tempNorthSouth = northSouthWayPT
    northSouthWayPT = -eastWestWayPT
    eastWestWayPT = tempNorthSouth
-
+#Move our ship forward to our waypoint.
  elif element[0] == 'F':
   northSouthShipPos += northSouthWayPT * int(element[1:])
   eastWestShipPos += eastWestWayPT * int(element[1:])
-'''
-  if shipDir == 0:
-   northSouth += int(element[1:])
-  elif shipDir == 1:
-   eastWest += int(element[1:])
-  elif shipDir == 2:
-   northSouth -= int(element[1:])
-  elif shipDir == 3:
-   eastWest -= int(element[1:])
-'''
- #print(northSouth, eastWest, shipDir)
 
+#Print final position of ship and manhattan distance.
 print(northSouthShipPos, eastWestShipPos, abs(northSouthShipPos) + abs(eastWestShipPos))

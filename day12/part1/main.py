@@ -3,12 +3,15 @@ with open("input.txt", "r") as f:
 
 array.pop()
 
+#initial values
 northSouth = 0
 eastWest = 0
 shipDir = 1
+
 #0 is north, 1 is east, 2 is south, 3 is west
 
 for element in array:
+#if we're monig N,S,E,W: 
  if element[0] == 'N':
   northSouth += int(element[1:])
  elif element[0] == 'S':
@@ -17,6 +20,7 @@ for element in array:
   eastWest += int(element[1:])
  elif element[0] == 'W':
   eastWest -= int(element[1:])
+#turn right:
  elif element[0] == 'R':
   toTurn = element[1:]
   if toTurn == '90':
@@ -27,6 +31,7 @@ for element in array:
    shipDir += 3
   if shipDir > 3:
    shipDir = shipDir - 4
+#turn left:
  elif element[0] == 'L':
   toTurn = element[1:]
   if toTurn == '90':
@@ -37,6 +42,7 @@ for element in array:
    shipDir -= 3
   if shipDir < 0:
    shipDir = shipDir + 4
+#go forward depending on ship direction
  elif element[0] == 'F':
   if shipDir == 0:
    northSouth += int(element[1:])
@@ -46,6 +52,6 @@ for element in array:
    northSouth -= int(element[1:])
   elif shipDir == 3:
    eastWest -= int(element[1:])
- #print(northSouth, eastWest, shipDir)
 
+#print out our final position and manhattan distance
 print(northSouth, eastWest, abs(northSouth) + abs(eastWest))
